@@ -21,21 +21,27 @@ pipeline {
         }
 
         stage('Test') {
+         steps {
 	sh '''
           echo "test is running"
 	   '''
         }
+	}
 
         stage('Push') {
+	steps {
         sh '''
           echo "Push is going on"
            '''
         }
+	}
 
         stage('Deploy') {
+	steps {
         sh '''
           echo "Deploy is going on"
            '''
         }
+	}
     }
 }
