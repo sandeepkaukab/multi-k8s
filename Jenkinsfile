@@ -12,22 +12,30 @@ pipeline {
             steps {
                 sh '''
 		     checkout scm
-		     docker build -t sandeepkaukab/multi-client:latest -t sandeepkaukab/multi-client:$SHA -f ./client/Dockerfile ./client
-		     docker build -t sandeepkaukab/multi-server:latest -t sandeepkaukab/multi-server:$SHA -f ./server/Dockerfile ./server
-		     docker build -t sandeepkaukab/multi-worker:latest -t -t sandeepkaukab/multi-worker:$SHA -f ./worker/Dockerfile ./worker
+		     docker build -t sandeepkaukab/multi-client:latest -t sandeepkaukab/multi-client:$BUILD_ID -f ./client/Dockerfile ./client
+		     docker build -t sandeepkaukab/multi-server:latest -t sandeepkaukab/multi-server:$BUILD_ID -f ./server/Dockerfile ./server
+		     docker build -t sandeepkaukab/multi-worker:latest -t -t sandeepkaukab/multi-worker:$BUILD_ID -f ./worker/Dockerfile ./worker
                 '''
             }
 
         }
 
         stage('Test') {
-
+	sh '''
+          echo "test is running"
+	   '''
         }
 
         stage('Push') {
+        sh '''
+          echo "Push is going on"
+           '''
         }
 
         stage('Deploy') {
+        sh '''
+          echo "Deploy is going on"
+           '''
         }
     }
 }
