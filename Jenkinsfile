@@ -11,7 +11,7 @@ pipeline {
                 sh '''
 		     docker build -t sandeepkaukab/multi-client:latest -t sandeepkaukab/multi-client:$BUILD_ID -f ./client/Dockerfile ./client
 		     docker build -t sandeepkaukab/multi-server:latest -t sandeepkaukab/multi-server:$BUILD_ID -f ./server/Dockerfile ./server
-		     docker build -t sandeepkaukab/multi-worker:latest -t -t sandeepkaukab/multi-worker:$BUILD_ID -f ./worker/Dockerfile ./worker
+		     docker build -t sandeepkaukab/multi-worker:latest -t sandeepkaukab/multi-worker:$BUILD_ID -f ./worker/Dockerfile ./worker
                 '''
             }
 
