@@ -21,19 +21,13 @@ pipeline {
         }
 
         stage('Test') {
-            steps {
-            }
 
         }
 
         stage('Push') {
-            steps {
-            }
         }
 
         stage('Deploy') {
-            steps {
-            }
         }
     }
 }
