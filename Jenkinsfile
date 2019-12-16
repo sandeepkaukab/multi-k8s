@@ -17,15 +17,21 @@ pipeline {
 
         }
 
-        stage('Test') {
+        stage('Push Docker Image') {
          steps {
+	  withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
 	sh '''
-          echo "test is running"
+          docker push sandeepkaukab/multi-client:latest
+	  docker push sandeepkaukab/multi-server:latest
+	  docker push sandeepkaukab/multi-worker:latest
+	  docker push sandeepkaukab/multi-client:$BUILD_ID
+	  docker push sandeepkaukab/multi-server:$BUILD_ID
+	  docker push sandeepkaukab/multi-worker:$BUILD_ID
 	   '''
         }
 	}
 
-        stage('Push') {
+        stage('Test') {
 	steps {
         sh '''
           echo "Push is going on"
