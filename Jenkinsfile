@@ -40,10 +40,14 @@ pipeline {
         }
 	}
 
-        stage('Deploy') {
+        stage('Deploy images on kubernetes') {
 	steps {
         sh '''
-          echo "Deploy is going on"
+            kubectl apply -f k8s
+	    kubectl set image deployments/server-deployment server=sandeepkaukab/multi-server:$BUILD_ID
+	    kubectl set image deployments/client-deployment client=sandeepkaukab/multi-client:$BUILD_ID
+	    kubectl set image deployments/worker-deployment worker=sandeepkaukab/multi-client:$BUILD_ID
+
            '''
         }
 	}
