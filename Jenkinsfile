@@ -28,6 +28,7 @@ pipeline {
 	  docker push sandeepkaukab/multi-server:$BUILD_ID
 	  docker push sandeepkaukab/multi-worker:$BUILD_ID
 	   '''
+	 }
         }
 	}
 
